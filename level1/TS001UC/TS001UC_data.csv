@@ -1,0 +1,6 @@
+test_id,flow_type,nav_route,fullname,shortname,fullname2,shortname2,save_btn,expected_pattern
+TC001020,HAPPY,site_admin,Software Testing UC01,UC01,,,id_saveanddisplay,Software Testing UC01
+TC001021,HAPPY,my_courses,Software Testing UC02,UC02,,,id_saveanddisplay,Software Testing UC02
+TC001022,CANCEL,site_admin,Machine Learning,UC03,,,id_cancel,
+TC001023,SAVE_PARTIAL_THEN_EDIT,site_admin,,UC03,Machine Learning,,id_saveanddisplay,Machine Learning
+TC001024,EDIT_AFTER_SAVE,site_admin,Software Engineering,UC03,,UC04,id_saveandreturn,Software Engineering
