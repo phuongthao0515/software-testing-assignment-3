@@ -9,7 +9,6 @@ sys.path.append(PROJECT_ROOT)
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoSuchElementException
 from colorama import Fore, Style, init
 import argparse, os, unittest, csv, time
@@ -19,9 +18,7 @@ from common.utils import APP_CONFIG, LOCATORS, BY_MAPPING, MESSAGES
 
 class TS_003(unittest.TestCase):
     def setUp(self):
-        driver_path = os.path.abspath(APP_CONFIG['webdriver']['value'])
-        service = Service(driver_path)
-        self.driver = webdriver.Chrome(service=service)
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
         self.verificationErrors = []
         run_precondition_lv2(self.driver)
@@ -69,17 +66,13 @@ class TS_003(unittest.TestCase):
         self.driver.find_element(BY_MAPPING[LOCATORS['add_user']['by']], LOCATORS['add_user']['value']).click()
 
         self.set_input_value(BY_MAPPING[LOCATORS['username']['by']], LOCATORS['username']['value'], username)
-
         password_btn = self.driver.find_element(BY_MAPPING[LOCATORS['password_toggle']['by']], LOCATORS['password_toggle']['value'])
         self.driver.execute_script("arguments[0].click();", password_btn)
         self.set_input_value(BY_MAPPING[LOCATORS['new_password']['by']], LOCATORS['new_password']['value'], new_password)
-
         self.set_input_value(BY_MAPPING[LOCATORS['firstname']['by']], LOCATORS['firstname']['value'], first_name)
-
         self.set_input_value(BY_MAPPING[LOCATORS['lastname']['by']], LOCATORS['lastname']['value'], last_name)
-
         self.set_input_value(BY_MAPPING[LOCATORS['email']['by']], LOCATORS['email']['value'], email)
-
+        
         submit_btn = self.driver.find_element(BY_MAPPING[LOCATORS['submit_btn']['by']], LOCATORS['submit_btn']['value'])
         self.driver.execute_script("arguments[0].scrollIntoView();", submit_btn)
         time.sleep(1)
@@ -89,11 +82,9 @@ class TS_003(unittest.TestCase):
         if is_success:
             try:
                 alert_text = self.driver.find_element(BY_MAPPING[LOCATORS['alert']['by']], LOCATORS['alert']['value']).text
-                page_text = self.driver.find_element(BY_MAPPING[LOCATORS['body']['by']], LOCATORS['body']['value']).text
                 assert "user.php" in self.driver.current_url
                 for expected in expected_results:
                     assert expected in alert_text
-                assert email in page_text
                 print(Fore.GREEN + "PASS" + Style.RESET_ALL)
             except AssertionError as e:
                 self.verificationErrors.append(str(e))

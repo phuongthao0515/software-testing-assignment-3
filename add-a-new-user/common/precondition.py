@@ -10,7 +10,7 @@ from common.utils import APP_CONFIG, LOCATORS, BY_MAPPING
     
 def run_precondition(driver, username="admin", password="sandbox24", is_custom_loginfo=False):
     print("\nRun precondition...")
-    driver.get("https://sandbox51.moodledemo.net/")
+    driver.get("https://sandbox.moodledemo.net/")
 
     wait = WebDriverWait(driver, 30)
 
@@ -27,7 +27,7 @@ def run_precondition(driver, username="admin", password="sandbox24", is_custom_l
         print("\tAlready logged in, Log out to log in with admin account")
         driver.find_element(By.CSS_SELECTOR, "div.usermenu").click()
         driver.find_element(By.LINK_TEXT, "Log out").click()
-        driver.get("https://sandbox51.moodledemo.net/")
+        driver.get("https://sandbox.moodledemo.net/")
     
     driver.find_element(By.LINK_TEXT, "Log in").click()
     for attempt in range(3):
@@ -95,7 +95,7 @@ def run_precondition(driver, username="admin", password="sandbox24", is_custom_l
     if is_custom_loginfo:
         driver.find_element(By.CSS_SELECTOR, "div.usermenu").click()
         driver.find_element(By.LINK_TEXT, "Log out").click()
-        driver.get("https://sandbox51.moodledemo.net/")
+        driver.get("https://sandbox.moodledemo.net/")
 
         for attempt in range(3):
             try:
@@ -225,7 +225,7 @@ def run_precondition_lv2(driver, username="admin", password="sandbox24", is_cust
     if is_custom_loginfo:
         driver.find_element(BY_MAPPING[LOCATORS['user_menu']['by']], LOCATORS["user_menu"]['value']).click()
         driver.find_element(BY_MAPPING[LOCATORS['log_out']['by']], LOCATORS["log_out"]['value']).click()
-        driver.get("https://sandbox51.moodledemo.net/")
+        driver.get("https://sandbox.moodledemo.net/")
 
         for attempt in range(3):
             try:

@@ -1,5 +1,5 @@
 key,value
 webdriver,../webdriver/chromedriver.exe
-base_url,https://sandbox51.moodledemo.net/
-login_url,https://sandbox51.moodledemo.net/login/index.php
-browse_user_url,https://sandbox51.moodledemo.net/admin/user.php
+base_url,https://sandbox.moodledemo.net/
+login_url,https://sandbox.moodledemo.net/login/index.php
+browse_user_url,https://sandbox.moodledemo.net/admin/user.php

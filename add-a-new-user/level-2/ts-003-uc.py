@@ -16,7 +16,6 @@ from colorama import Fore, Style
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 
 from common.precondition import run_precondition_lv2
 from common.utils import APP_CONFIG, LOCATORS, BY_MAPPING, MESSAGES
@@ -24,9 +23,7 @@ from common.utils import APP_CONFIG, LOCATORS, BY_MAPPING, MESSAGES
 
 class TS_003_UC(unittest.TestCase):
     def setUp(self):
-        driver_path = os.path.abspath(APP_CONFIG['webdriver']['value'])
-        service = Service(driver_path)
-        self.driver = webdriver.Chrome(service=service)
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
         self.verificationErrors = []
 
