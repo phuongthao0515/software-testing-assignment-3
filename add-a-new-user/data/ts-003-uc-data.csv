@@ -1,0 +1,10 @@
+tc_id,flow,wrong_username,wrong_password,correct_login_username,correct_login_password,username,new_password,first_name,last_name,email,city,country,correct_username,correct_email,error_message_1,expected_results
+TC-003-077,main_flow,,,,,user77,123,Van,Huang,user77@gmail.com,,,,,,Changes saved
+TC-003-078,invalid_login_retry,wrong,wrong,manager,sandbox24,user78,123,Van,Huang,user78@gmail.com,,,,,,Changes saved
+TC-003-079,indirect_navigation,,,,,user79,123,Van,Huang,user79@gmail.com,,,,,,Changes saved
+TC-003-080,invalid_data,,,,,user80,,Van,Huang,hoangvan80@gmail.com,,,,,,Required
+TC-003-081,invalid_data,,,,,user81#,123,Van,Huang,hoangvan81@gmail@com,,,,,,"The username can only contain alphanumeric lowercase characters (letters and numbers), underscore (_), hyphen (-), period (.) or at symbol (@).;Invalid email address"
+TC-003-082,invalid_data,,,,,manager,123,Van,Huang,manager@moodle.a,,,,,,"This username already exists, choose another;This email address is already registered."
+TC-003-083,cancel_creation,,,,,user83,123,Anh Van,Huang,abc83@gmail.com,,,,,,Cancelled
+TC-003-084,optional_fields,,,,,user84,123,ABC,Huang,abc84@gmail.com,Ho Chi Minh,Viet Nam,,,,Changes saved
+TC-003-085,retry_after_invalid,,,,,user85#,123,Bich Van,Huang,hoangvan85@gmail@com,,,user85,hoangvan85@gmail.com,"The username can only contain alphanumeric lowercase characters (letters and numbers), underscore (_), hyphen (-), period (.) or at symbol (@).;Invalid email address",Changes saved
