@@ -1,0 +1,37 @@
+key,by,value
+site_admin,LINK_TEXT,Site administration
+site_security,LINK_TEXT,Site security settings
+users,LINK_TEXT,Users
+add_user,LINK_TEXT,Add a new user
+browse_list_users,LINK_TEXT,Browse list of users
+log_in,LINK_TEXT,Log in
+log_out,LINK_TEXT,log_out
+
+log_in_username,ID,username
+log_in_password,ID,password
+password_policy,ID,id_s__passwordpolicy
+username,ID,id_username
+new_password,ID,id_newpassword
+firstname,ID,id_firstname
+lastname,ID,id_lastname
+email,ID,id_email
+city,ID,id_city
+country,ID,id_country
+
+login_btn,ID,loginbtn
+submit_btn,ID,id_submitbutton
+cancel_btn,ID,id_cancel
+
+password_toggle,CSS_SELECTOR,[data-passwordunmask="edit"]
+user_menu,CSS_SELECTOR,div.usermenu
+alert,CSS_SELECTOR,div.alert
+body,TAG_NAME,body
+
+error_username,ID,id_error_username
+error_firstname,ID,id_error_firstname
+error_lastname,ID,id_error_lastname
+error_email,ID,id_error_email
+error_password,ID,id_error_newpassword
+
+save_site_security,XPATH,//button[normalize-space()='Save changes']
+all_error_messages,XPATH,//p[@class='errormessage']

@@ -1,0 +1,20 @@
+tc_id,username,new_password,first_name,last_name,email,expected_results
+TC_003_026,user.name_99-test@dev,P@ssw0rd_Complex-123,Alexanderson,Nguuen,alex.nguyen99-test_email@subdomain123.exampledomain.com,Changes saved
+TC_003_027,,Str0ng-P@ssword_456,Christopher,Tran,chris.tran_dev2024@engineering-lab.example.org,Required
+TC_003_028,user_name_with_valid_chars_but_exceeding_length_limit_abcdefghijklmnopqrstuvwxyz_012_extra_chars_test,ValidP@ss_789,Minh,Le,minh.le_2026@sub.exampledomain.net,Error writing to database
+TC_003_029,user#name!,SecureP@ss_321,Linh,Pham,linh.pham_dev@testing-lab.example.com,"The username can only contain alphanumeric lowercase characters (letters and numbers), underscore (_), hyphen (-), period (.) or at symbol (@)."
+TC_003_030,manager,SecureP@ss_321,Linh,Pham,linh.pham@hcmut.edu.vn,"This username already exists, choose another"
+TC_003_031,a.b_c-d@x1,XyZ9_!@#-ComplexPassword_2026,,Vo,V@gmail.com,Missing given name
+TC_003_032,alpha.beta_123-test@qa,XyZ9_!@#-ComplexPassword_2026,Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab,Do,do.qa_engineer-2026@subsys.example-domain123.org,Error writing to database
+TC_003_033,delta.gamma_42-test@lab,XyZ9_!@#-ComplexPassword_2026,Bao-An,,baoan.dev-2026_test@multi.sub.system-example123.io,Missing last name
+TC_003_034,omega.user_77-test@sys,XyZ9_!@#-ComplexPassword_2026,Bao-An,Lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll,thi.my_dev-2026@deep.subsystem.example-domain456.net,Error writing to database
+TC_003_035,alpha.user_77-test@sys,XyZ9_!@#-ComplexPassword_2026,Bao-An,Bao-An,,Required
+TC_003_036,dang.user_77-test@sys,XyZ9_!@#-ComplexPassword_2026,Quoc,Dang*123,@example.com,Invalid email address
+TC_003_037,quoc.user_77-test@sys,XyZ9_!@#-ComplexPassword_2026,Quoc,Dang*123,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com,Invalid email address
+TC_003_038,epsilon_77-user@test,XyZ9_!@#-ComplexPassword_2026,Tram,Le,tram.le@.com,Invalid email address
+TC_003_039,zeta.dev-2026@test,XyZ9_!@#-ComplexPassword_2026,Vy,Nguyen,vy.nguyen@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com,Invalid email address
+TC_003_040,kappa_user.33@test,XyZ9_!@#-ComplexPassword_2026,a,B,lllllllllllllllllllllllllllllllllllllllllllllllllllll@ddddddddddddddddddddddddddddddddddddddddddd.com,Error writing to database
+TC_003_041,abc-test@sys,XyZ9_!@#-ComplexPassword_2026,Quoc,Dang*123,quoc.dang.dev.example.com,Invalid email address
+TC_003_042,nu.user_55@test,XyZ9_!@#-ComplexPassword_2026,Van,Huynh,manager@moodle.a,This email address is already registered.
+TC_003_043,baoan-test@sys,,Bao-An,Bao-An,baoan@hcmut.edu.vn,Required
+TC_003_044,baoan@sys,apdWzzTnDry9EtdFle1ouuW7Oiy4r1JVunylSz0Z0zpKQ6oNSWGc8uwvfMs2lSXwbcuIqevhNtvFfmn79TOY4hl5SKy28HzMElEi0uCIL3eaGtdSn2LgcS7eKRoDHdLxV,Bao-An,Bao-An,baoan2004@hcmut.edu.vn,Maximum of 128 characters
