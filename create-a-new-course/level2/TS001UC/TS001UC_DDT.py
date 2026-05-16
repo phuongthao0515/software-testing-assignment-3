@@ -73,9 +73,7 @@ def _navigate(driver, nav_route):
         driver.get(URLS["course_edit_url"])
         return
     if nav_route == "my_courses":
-        driver.get(URLS["home_url"])
-        _ensure_menu(driver)
-        driver.find_element(*L("nav_my_courses")).click()
+        driver.get(URLS["base_url"] + "/my/courses.php")
         WebDriverWait(driver, int(WAIT["submit_seconds"])).until(
             lambda d: d.find_elements(*L("create_new_course"))
         )
@@ -148,7 +146,7 @@ def _flow_edit_after_save(driver, row):
     driver.get(URLS["base_url"] + FRAG["edit_by_id_template"] + m.group(1))
     _fill(driver, L("shortname_field"),
           _unique(row["shortname2"], row["test_id"][-3:] + "B"))
-    driver.find_element(*_save_btn_locator(row["save_btn"] or "return")).click()
+    driver.find_element(*L("save_button_display")).click()
     _wait_off_edit(driver)
 
 
