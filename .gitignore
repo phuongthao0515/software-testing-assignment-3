@@ -9,4 +9,4 @@ venv/
 *_run.log
 
 # Reliability NFR output — regenerated on each run; numbers are quoted in the report PDF
-non-functional/reliability_report.csv
+reliability_report.csv
