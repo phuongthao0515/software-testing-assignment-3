@@ -7,7 +7,6 @@ from colorama import Fore, Style
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 
 from common.precondition import run_precondition
 from common.utils import MESSAGES
@@ -15,10 +14,7 @@ from common.utils import MESSAGES
 
 class TS_003_UC(unittest.TestCase):
     def setUp(self):
-        driver_path = os.path.abspath("../webdriver/chromedriver.exe")
-        service = Service(driver_path)
-
-        self.driver = webdriver.Chrome(service=service)
+        self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(3)
 
         self.verificationErrors = []
@@ -36,14 +32,14 @@ class TS_003_UC(unittest.TestCase):
 
 
     def open_add_user_page(self):
-        self.driver.get("https://sandbox51.moodledemo.net/")
+        self.driver.get("https://sandbox.moodledemo.net/")
         self.driver.find_element(By.LINK_TEXT, "Site administration").click()
         self.driver.find_element(By.LINK_TEXT, "Users").click()
         self.driver.find_element(By.LINK_TEXT, "Add a new user").click()
 
 
     def open_add_user_page_indirect(self):
-        self.driver.get("https://sandbox51.moodledemo.net/")
+        self.driver.get("https://sandbox.moodledemo.net/")
         self.driver.find_element(By.LINK_TEXT, "Site administration").click()
         self.driver.find_element(By.LINK_TEXT, "Users").click()
         self.driver.find_element(By.LINK_TEXT, "Browse list of users").click()
@@ -156,7 +152,7 @@ class TS_003_UC(unittest.TestCase):
 
     def flow_invalid_login_retry(self, row):
         # wrong login
-        self.driver.get("https://sandbox51.moodledemo.net/login/index.php")
+        self.driver.get("https://sandbox.moodledemo.net/login/index.php")
         self.set_input_value(By.ID, "username", row["wrong_username"])
         self.set_input_value(By.ID, "password", row["wrong_password"])
         self.driver.find_element(By.ID, "loginbtn").click()
