@@ -1,9 +1,3 @@
-"""Reliability (repeatability) test for the Moodle Add-Course flow.
-
-Runs the same create-course operation N times and asserts that the
-observed success rate meets the configured threshold.
-"""
-
 import csv
 import os
 import time
