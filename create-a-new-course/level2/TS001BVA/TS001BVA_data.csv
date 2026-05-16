@@ -1,0 +1,10 @@
+test_id,fullname,shortname,expected_result,expected_pattern
+TC001001,T,Ax120,SUCCESS,course/view\.php
+TC001002,AA,Bx128,SUCCESS,course/view\.php
+TC001003,Ax512,Cx128,SUCCESS,course/view\.php
+TC001004,Ax512,Cx128,SUCCESS,course/view\.php
+TC001005,Dx256,q,SUCCESS,course/view\.php
+TC001006,Dx256,AB,SUCCESS,course/view\.php
+TC001007,Dx256,Hx256,SUCCESS,course/view\.php
+TC001008,Gx256,Lx256,SUCCESS,course/view\.php
+TC001009,Tx256,Fx160,SUCCESS,course/view\.php

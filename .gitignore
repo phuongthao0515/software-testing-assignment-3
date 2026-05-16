@@ -1,0 +1,12 @@
+report/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local run logs — used only for report screenshots, regenerated on demand
+*.log
+*_run.log
+
+# Reliability NFR output — regenerated on each run; numbers are quoted in the report PDF
+non-functional/reliability_report.csv

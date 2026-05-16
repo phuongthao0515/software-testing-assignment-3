@@ -1,0 +1,6 @@
+test_id,fullname,shortname,clear_category,expected_result,expected_pattern
+TC001015,Software Testing 15,DT01,N,SUCCESS,course/view\.php
+TC001016,,DT02,N,ERROR,Missing full name
+TC001017,Software Testing Course,,N,ERROR,Missing short name
+TC001018,Software Testing,DT01,N,ERROR,Short name is already used for another course
+TC001019,Software Testing 19,DT05,Y,ERROR,You must supply a value here
