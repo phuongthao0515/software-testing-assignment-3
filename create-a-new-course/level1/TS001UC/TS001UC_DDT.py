@@ -1,73 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Level 1 Data-Driven Test - Use Case suite (TS001UC).
-
-Consolidates TC001020-TC001024 from Project #2 into a single
-parameterised test driven by TS001UC_data.csv.
-
-Unlike BVA / ECP / DT (which only vary in input data), Use-Case tests
-deliberately exercise different *flows*. This script keeps a single
-unittest entry point but dispatches each row to one of four flow
-handlers via the `flow_type` CSV column:
-
-  HAPPY                   Navigate to the Add-Course form via `nav_route`
-                          (site_admin or my_courses), fill fullname +
-                          shortname, click `save_btn`, assert body
-                          contains `expected_pattern`.
-                          [TC001020, TC001021]
-
-  CANCEL                  Same as HAPPY but click id_cancel. Assert that
-                          the URL is no longer on /course/edit.php.
-                          [TC001022]
-
-  SAVE_PARTIAL_THEN_EDIT  Fill shortname only, save (expect validation
-                          re-render), then fill `fullname2`, save again,
-                          assert body contains `expected_pattern`.
-                          [TC001023]
-
-  EDIT_AFTER_SAVE         Fill fullname + shortname, save and display,
-                          re-open the edit form for the newly-created
-                          course, replace shortname with `shortname2`,
-                          click `save_btn` (typically id_saveandreturn),
-                          assert body contains `expected_pattern`.
-                          [TC001024]
-
-CSV columns
------------
-test_id, flow_type, nav_route, fullname, shortname,
-fullname2, shortname2, save_btn, expected_pattern
-
-Differences vs the original Project #2 scripts
-----------------------------------------------
-* Login precondition is baked in (setUpClass), so no separate
-  PRECONDITION file or manual browser state is required.
-* Replaced all session-dynamic IDs (moremenu-dropdown-<hash>,
-  single_button<hash>) with stable locators (link text, XPath on
-  normalised text, CSS starts-with).
-* TC001021's catch-all assertion `^[\s\S]*$` (always passes) replaced
-  with a meaningful body-text check.
-* TC001022 had no assertion at all in the original (Selenium IDE
-  export error) - this script asserts the URL moves off the edit
-  form after cancel.
-* TC001024's "edit after save" sequence in the original assumes the
-  edit form is still on screen after id_saveanddisplay (it isn't -
-  Moodle redirects to /course/view.php). This script extracts the
-  new course id from the post-save URL and re-opens the edit form
-  explicitly.
-* Shortnames are suffixed with a per-run token so reruns on the
-  shared sandbox do not collide with previously-created courses.
-
-Run
----
-    pip install --upgrade selenium
-    python TS001UC_DDT.py
-"""
 import csv
 import os
 import re
 import time
 import unittest
-
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
@@ -91,15 +26,12 @@ def _load_rows(path):
 
 
 def _unique(base, suffix):
-    """Append the run token + suffix to a shortname so it is globally unique."""
     if not base:
         return ""
     return base + "_" + RUN_TOKEN + suffix
 
 
 def _ensure_menu(driver):
-    """Some Moodle themes hide top-nav links behind a 'more' dropdown.
-    Open it if Site administration / My courses are not directly visible."""
     if driver.find_elements(By.LINK_TEXT, "Site administration"):
         return
     if driver.find_elements(By.LINK_TEXT, "My courses"):
@@ -110,24 +42,19 @@ def _ensure_menu(driver):
 
 
 def _navigate(driver, nav_route):
-    """Open the Add-Course form via the requested route."""
     if nav_route == "site_admin":
         driver.get(COURSE_EDIT_URL)
         return
     if nav_route == "my_courses":
-        driver.get(HOME_URL)
-        _ensure_menu(driver)
-        driver.find_element(By.LINK_TEXT, "My courses").click()
-        WebDriverWait(driver, 30).until(
-            lambda d: d.find_elements(
-                By.XPATH,
-                "//button[normalize-space()='Create new course']"
-                " | //a[normalize-space()='Create new course']")
+        driver.get(BASE_URL + "/my/courses.php")
+        create_xpath = (
+            "//a[normalize-space()='Create course']"
+            " | //button[normalize-space()='Create course']"
         )
-        driver.find_element(
-            By.XPATH,
-            "//button[normalize-space()='Create new course']"
-            " | //a[normalize-space()='Create new course']").click()
+        WebDriverWait(driver, 30).until(
+            lambda d: d.find_elements(By.XPATH, create_xpath)
+        )
+        driver.find_element(By.XPATH, create_xpath).click()
         WebDriverWait(driver, 30).until(
             lambda d: "course/edit.php" in d.current_url
         )
@@ -149,10 +76,8 @@ def _wait_off_edit(driver, timeout=30):
             lambda d: "course/edit.php" not in d.current_url
         )
     except TimeoutException:
-        pass  # let the assertion in the caller produce a meaningful failure
+        pass
 
-
-# --- Flow handlers ------------------------------------------------------------
 
 def _flow_happy(driver, row):
     _navigate(driver, row["nav_route"])
@@ -172,10 +97,8 @@ def _flow_cancel(driver, row):
 
 def _flow_save_partial_then_edit(driver, row):
     _navigate(driver, row["nav_route"])
-    # Fill only shortname; leaving fullname empty triggers validation.
     _fill(driver, "id_shortname", _unique(row["shortname"], row["test_id"][-3:]))
     driver.find_element(By.ID, "id_saveanddisplay").click()
-    # Form re-renders with validation errors; give it a moment.
     time.sleep(3)
     _fill(driver, "id_fullname", row["fullname2"])
     driver.find_element(By.ID, "id_saveanddisplay").click()
@@ -188,7 +111,6 @@ def _flow_edit_after_save(driver, row):
     _fill(driver, "id_shortname",
           _unique(row["shortname"], row["test_id"][-3:] + "A"))
     driver.find_element(By.ID, "id_saveanddisplay").click()
-    # After save-and-display, Moodle redirects to /course/view.php?id=N.
     WebDriverWait(driver, 30).until(
         lambda d: "course/view.php" in d.current_url
     )
@@ -199,7 +121,7 @@ def _flow_edit_after_save(driver, row):
     driver.get(BASE_URL + "/course/edit.php?id=" + m.group(1))
     _fill(driver, "id_shortname",
           _unique(row["shortname2"], row["test_id"][-3:] + "B"))
-    driver.find_element(By.ID, row["save_btn"] or "id_saveandreturn").click()
+    driver.find_element(By.ID, "id_saveanddisplay").click()
     _wait_off_edit(driver)
 
 
@@ -212,7 +134,6 @@ FLOW_HANDLERS = {
 
 
 class TS001UCDataDriven(unittest.TestCase):
-    """Data-driven Use Case suite for the Moodle Add-Course form."""
 
     @classmethod
     def setUpClass(cls):
@@ -254,7 +175,6 @@ class TS001UCDataDriven(unittest.TestCase):
 
         handler(self.driver, row)
 
-        # Assertion per flow type.
         if flow == "CANCEL":
             self.assertNotRegex(
                 self.driver.current_url, r"course/edit\.php",

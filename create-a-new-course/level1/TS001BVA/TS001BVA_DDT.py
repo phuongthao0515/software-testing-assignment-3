@@ -17,17 +17,10 @@ PASSWORD        = "sandbox24"
 DATA_FILE       = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                "TS001BVA_data.csv")
 
-# Short run-time token appended to every shortname so reruns do not collide
-# with courses created in earlier runs.
 RUN_TOKEN = str(int(time.time()))[-5:]
 
 
 def expand(value):
-    """Expand "<char>x<count>" shorthand into a literal string.
-
-    "Ax5" -> "AAAAA". Any value that does not match the shorthand is
-    returned unchanged.
-    """
     m = re.fullmatch(r"(.)x(\d+)", value or "")
     if m:
         return m.group(1) * int(m.group(2))
@@ -40,7 +33,6 @@ def load_rows(path):
 
 
 class TS001BVADataDriven(unittest.TestCase):
-    """Data-driven BVA suite for the Moodle Add-Course form."""
 
     @classmethod
     def setUpClass(cls):
@@ -75,7 +67,6 @@ class TS001BVADataDriven(unittest.TestCase):
         d.get(COURSE_EDIT_URL)
 
         fullname  = expand(row["fullname"])
-        # Make shortname unique per row + per run.
         shortname = expand(row["shortname"]) + "_" + row["test_id"][-3:] + RUN_TOKEN
 
         fn = d.find_element(By.ID, "id_fullname")
@@ -88,9 +79,6 @@ class TS001BVADataDriven(unittest.TestCase):
 
         d.find_element(By.ID, "id_saveanddisplay").click()
 
-        # Wait for the edit URL to change (success redirect or validation
-        # re-render). If nothing changes within 15s, fall through to the
-        # assertion below which will produce a meaningful failure.
         try:
             WebDriverWait(d, 15).until(lambda dr: dr.current_url != COURSE_EDIT_URL)
         except TimeoutException:
