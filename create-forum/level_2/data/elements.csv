@@ -1,0 +1,80 @@
+name,by,value
+login_link,LINK_TEXT,Log in
+username_field,ID,username
+password_field,ID,password
+login_button,ID,login
+course_link,LINK_TEXT,My first course
+edit_mode_button,NAME,setmode
+forum_name_field,ID,id_name
+expand_all_button,XPATH,//span[normalize-space()='Expand all']
+availability_section,ID,collapseElement-1
+attachments_word_count_section,ID,collapseElement-2
+subscription_tracking_section,ID,collapseElement-3
+discussion_locking_section,ID,collapseElement-4
+post_threshold_blocking_section,ID,collapseElement-5
+whole_forum_grading_section,ID,collapseElement-6
+ratings_section,ID,collapseElement-7
+common_module_settings_section,ID,collapseElement-8
+restrict_access_section,ID,collapseElement-9
+activity_completion_section,ID,collapseElement-10
+tags_section,ID,collapseElement-11
+competencies_section,ID,collapseElement-12
+whole_forum_grade_type_select,ID,id_grade_forum_modgrade_type
+whole_forum_max_grade_field,ID,id_grade_forum_modgrade_point
+whole_forum_grade_to_pass_field,ID,id_gradepass_forum
+ratings_aggregate_type_select,ID,id_assessed
+ratings_scale_type_select,ID,id_scale_modgrade_type
+ratings_max_grade_field,ID,id_scale_modgrade_point
+ratings_grade_to_pass_field,ID,id_gradepass
+due_date_enable_checkbox,ID,id_duedate_enabled
+cutoff_date_enable_checkbox,ID,id_cutoffdate_enabled
+cutoff_date_year_select,ID,id_cutoffdate_year
+forum_description_iframe,CSS_SELECTOR,iframe
+forum_description_editor,ID,tinymce
+show_description_checkbox,ID,id_showdescription
+forum_type_select,ID,id_type
+max_bytes_select,ID,id_maxbytes
+max_attachments_select,ID,id_maxattachments
+display_word_count_select,ID,id_displaywordcount
+subscription_mode_select,ID,id_forcesubscribe
+read_tracking_select,ID,id_trackingtype
+lock_discussion_enable_checkbox,ID,id_lockdiscussionafter_enabled
+lock_discussion_number_field,ID,id_lockdiscussionafter_number
+lock_discussion_time_unit_select,ID,id_lockdiscussionafter_timeunit
+block_period_select,ID,id_blockperiod
+block_after_field,ID,id_blockafter
+warn_after_field,ID,id_warnafter
+visible_select,ID,id_visible
+course_module_id_field,ID,id_cmidnumber
+language_select,ID,id_lang
+group_mode_select,ID,id_groupmode
+add_restriction_button,XPATH,//button[text()='Add restriction...']
+grade_restriction_option,ID,availability_addrestriction_grade
+availability_condition_select,XPATH,//div[@id='fitem_id_availabilityconditionsjson']//select[@name='id']
+minimum_grade_checkbox,XPATH,//input[@type='checkbox' and @name='min']
+minimum_grade_percentage_field,XPATH,//input[@title='Minimum grade percentage (inclusive)']
+completion_none_radio,ID,id_completion_0
+completion_manual_mark_radio,ID,id_completion_1
+completion_add_requirement_radio,ID,id_completion_2
+tags_field,XPATH,//input[@placeholder='Enter tags...']
+competency_rule_select,ID,id_competency_rule
+send_notifications_checkbox,ID,id_coursecontentnotification
+page_header_forum_title,XPATH,"//header[@id='page-header']//h1[contains(text(),'Forum')]"
+course_page_title,XPATH,//header[@id='page-header']/div/div[2]/div/div/div/div/h1
+save_and_display_button,ID,id_submitbutton
+save_and_return_to_course_button,ID,id_submitbutton2
+cancel_button,ID,id_cancel
+created_forum_name,XPATH,//h1[@class='h2 mb-0']
+forum_name_on_course_page,XPATH,//li[@id='module-7']/div[2]/div[2]/div[2]/div/div/span/a
+forum_name_error,ID,id_error_name
+whole_forum_grade_to_pass_error,ID,id_error_gradepass_forum
+ratings_grade_to_pass_error,ID,id_error_gradepass
+whole_forum_grade_value_error,ID,fgroup_id_error_grade_forum
+ratings_grade_value_error,ID,fgroup_id_error_scale
+whole_forum_grade_field_error,ID,id_error_grade_forum
+availability_error,ID,id_error_cutoffdate
+ratings_aggregate_type_error,ID,id_error_assessed
+add_activity_button,XPATH,//div[2]/div[2]/div/div/button/i
+activity_chooser_button,XPATH,//div[2]/div[2]/div/div/div/button/i
+forum_activity_link,LINK_TEXT,Forum
+add_selected_activity_button,XPATH,//button[@data-action='add-selected-chooser-option']
