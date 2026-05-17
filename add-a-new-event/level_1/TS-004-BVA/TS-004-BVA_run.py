@@ -56,10 +56,7 @@ for index, row in data.iterrows():
 
         print("\nRunning:", tc_id)
 
-        # Handle LONG_TEXT (10000 chars)
-        if title == "LONG_TEXT":
-            title = "A" * 10000
-            expected_value = title
+
 
         # ---------------------------
         # Step 1: Login
@@ -73,7 +70,7 @@ for index, row in data.iterrows():
             "https://sandbox.moodledemo.net/calendar/view.php?view=month"
         )
 
-        time.sleep(2)
+        # time.sleep(10)
 
         # ---------------------------
         # Step 3: Click "New event"
@@ -83,7 +80,7 @@ for index, row in data.iterrows():
             "//button[contains(., 'New event')]"
         ).click()
 
-        time.sleep(2)
+        time.sleep(5)
 
         # ---------------------------
         # Step 4: Fill Title
@@ -95,6 +92,7 @@ for index, row in data.iterrows():
                 "id_name"
             ).send_keys(title)
 
+        time.sleep(10)
         # ---------------------------
         # Step 5: Fill Duration (if any)
         # ---------------------------
@@ -106,7 +104,7 @@ for index, row in data.iterrows():
                 "id_duration_2"
             ).click()
 
-            time.sleep(1)
+            time.sleep(5)
 
             driver.find_element(
                 By.ID,
@@ -129,7 +127,7 @@ for index, row in data.iterrows():
                 "//a[contains(.,'Show more')]"
             ).click()
 
-            time.sleep(1)
+            time.sleep(5)
 
             # enable repeat
             driver.find_element(
@@ -137,7 +135,7 @@ for index, row in data.iterrows():
                 "id_repeat"
             ).click()
 
-            time.sleep(1)
+            time.sleep(5)
 
             repeat_input = driver.find_element(
                 By.ID,
@@ -149,6 +147,7 @@ for index, row in data.iterrows():
             repeat_input.send_keys(
                 str(repeat)
             )
+            time.sleep(5)
 
         # ---------------------------
         # Step 7: Click Save
@@ -157,8 +156,9 @@ for index, row in data.iterrows():
             By.XPATH,
             "//button[contains(., 'Save')]"
         ).click()
+        
 
-        time.sleep(2)
+        time.sleep(10)
 
         page_source = driver.page_source
 
