@@ -294,7 +294,7 @@ class NewForumPage:
         print("--Plus button clicked")
 
         self.click("activity_chooser_button")
-        time.sleep(1)
+        time.sleep(2)
         self.click("forum_activity_link")
         self.click("add_selected_activity_button")
         time.sleep(1)

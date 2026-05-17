@@ -480,7 +480,7 @@ class NewForumPage:
             "arguments[0].scrollIntoView({block: 'center'});", 
             self.wait.until(EC.element_to_be_clickable((By.XPATH, "//div[2]/div[2]/div/div/button/i")))
         )
-        time.sleep(1)  # Small pause to allow scroll to finish
+        time.sleep(2)  # Small pause to allow scroll to finish
         self.driver.find_element(By.XPATH, "//div[2]/div[2]/div/div/button/i").click()
         print("--Plus button clicked")
 
