@@ -1,6 +1,7 @@
 import csv
 import time
 import unittest
+from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -10,6 +11,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from utils.new_forum_page import NewForumPage
 from utils.pre_conditions import PreConditions
 from utils.data import ERR_MESSAGES
+
+
+PROJECT_DIR = Path(__file__).resolve().parents[1]
 
 
 class TestUsecase_Reattempt(unittest.TestCase):
@@ -85,7 +89,7 @@ class TestUsecase_Reattempt(unittest.TestCase):
         pre_conditions.set_up(self.base_url)
         
         # READ TEST DATA FROM CSV
-        csv_file = "../data/ts002-uc_5.csv"
+        csv_file = PROJECT_DIR / "data" / "ts002-uc_5.csv"
         with open(
             csv_file,
             newline="",
