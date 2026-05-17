@@ -1,0 +1,64 @@
+TC_ID,ForumName,A_DDate_Year,A_CDate_Year,WFG_GradeType,WFG_MaxGrade,WFG_GradeToPass,R_AggType,R_ScaleType,R_MaxGrade,R_GradeToPass,ExpectedResult
+TC-002-001,-,-,-,-,-,-,-,-,-,-,FORUM_NAME_ERR
+TC-002-002,A,-,-,-,-,-,-,-,-,-,SUCCESS
+TC-002-003,AA,-,-,-,-,-,-,-,-,-,SUCCESS
+TC-002-004,Course X Forum,-,-,-,-,-,-,-,-,-,SUCCESS
+TC-002-005,Course X Forum,-,-,Scale,-,2,-,-,-,-,SUCCESS
+TC-002-006,Course X Forum,-,-,Scale,-,2.01,-,-,-,-,MAX_AUTO_FORUM_GRADE_TO_PASS_ERR
+TC-002-007,Course X Forum,-,-,Scale,-,1.99,-,-,-,-,SUCCESS
+TC-002-008,Course X Forum,-,-,Scale,-,0,-,-,-,-,SUCCESS
+TC-002-009,Course X Forum,-,-,Point,0,0,-,-,-,-,FORUM_GRADE_VALUE_ERR
+TC-002-010,Course X Forum,-,-,Point,1,1,-,-,-,-,SUCCESS
+TC-002-011,Course X Forum,-,-,Point,2,2,-,-,-,-,SUCCESS
+TC-002-012,Course X Forum,-,-,Point,50,50,-,-,-,-,SUCCESS
+TC-002-013,Course X Forum,-,-,Point,99,99,-,-,-,-,SUCCESS
+TC-002-014,Course X Forum,-,-,Point,100,100,-,-,-,-,SUCCESS
+TC-002-015,Course X Forum,-,-,Point,101,101,-,-,-,-,FORUM_GRADE_VALUE_ERR
+TC-002-016,Course X Forum,-,-,Point,50,20,-,-,-,-,SUCCESS
+TC-002-017,Course X Forum,-,-,Point,50,49,-,-,-,-,SUCCESS
+TC-002-018,Course X Forum,-,-,Point,50,51,-,-,-,-,MAX_MANUAL_FORUM_GRADE_TO_PASS_ERR
+TC-002-019,Course X Forum,-,-,-,-,-,Average of ratings,Scale,-,2.01,MAX_AUTO_RATINGS_GRADE_TO_PASS_ERR
+TC-002-020,Course X Forum,-,-,-,-,-,Average of ratings,Scale,-,2,SUCCESS
+TC-002-021,Course X Forum,-,-,-,-,-,Average of ratings,Scale,-,1.99,SUCCESS
+TC-002-022,Course X Forum,-,-,-,-,-,Average of ratings,Scale,-,0,SUCCESS
+TC-002-023,Course X Forum,-,-,-,-,-,Average of ratings,Point,50,51,MAX_MANUAL_RATINGS_GRADE_TO_PASS_ERR
+TC-002-024,Course X Forum,-,-,-,-,-,Average of ratings,Point,50,50,SUCCESS
+TC-002-025,Course X Forum,-,-,-,-,-,Average of ratings,Point,50,49,SUCCESS
+TC-002-026,Course X Forum,-,-,-,-,-,Average of ratings,Point,50,20,SUCCESS
+TC-002-027,Course X Forum,-,-,-,-,-,Average of ratings,Point,100,100,SUCCESS
+TC-002-028,Course X Forum,-,-,-,-,-,Average of ratings,Point,101,101,RATINGS_GRADE_VALUE_ERR
+TC-002-029,Course X Forum,-,-,-,-,-,Average of ratings,Point,99,99,SUCCESS
+TC-002-030,Course X Forum,-,-,-,-,-,Average of ratings,Point,2,2,SUCCESS
+TC-002-031,Course X Forum,-,-,-,-,-,Average of ratings,Point,1,1,SUCCESS
+TC-002-032,Course X Forum,-,-,-,-,-,Average of ratings,Point,0,0,RATINGS_GRADE_VALUE_ERR
+TC-002-033,-,-,-,-,-,-,-,-,-,-,FORUM_NAME_ERR
+TC-002-034,Assignment,-,-,-,-,-,-,-,-,-,SUCCESS
+TC-002-035,Course X Forum,ENABLED,2027,-,-,-,-,-,-,-,SUCCESS
+TC-002-036,Course X Forum,-,ENABLED,-,-,-,-,-,-,-,SUCCESS
+TC-002-037,Course X Forum,ENABLED,-,-,-,-,-,-,-,-,SUCCESS
+TC-002-038,Course X Forum,ENABLED,2025,-,-,-,-,-,-,-,AVAILABILITY_ERR
+TC-002-039,Course X Forum,-,-,Scale,-,1.5,-,-,-,-,SUCCESS
+TC-002-040,Course X Forum,-,-,Point,80,30,-,-,-,-,SUCCESS
+TC-002-041,Course X Forum,-,-,Scale,-,5.51,-,-,-,-,MAX_AUTO_FORUM_GRADE_TO_PASS_ERR
+TC-002-042,Course X Forum,-,-,Scale,-,5A,-,-,-,-,FORUM_GRADE_TO_PASS_ERR
+TC-002-043,Course X Forum,-,-,Point,-10,-,-,-,-,-,FORUM_GRADE_VALUE_ERR
+TC-002-044,Course X Forum,-,-,Point,150,-,-,-,-,-,FORUM_GRADE_VALUE_ERR
+TC-002-045,Course X Forum,-,-,Point,A,-,-,-,-,-,FORUM_GRADE_VALUE_ERR
+TC-002-046,Course X Forum,-,-,Point,80,90,-,-,-,-,MAX_MANUAL_FORUM_GRADE_TO_PASS_ERR
+TC-002-047,Course X Forum,-,-,Point,80,A,-,-,-,-,FORUM_GRADE_TO_PASS_ERR
+TC-002-050,Course X Forum,-,-,-,-,-,Average of ratings,None,-,-,AGG_TYPE_ERR
+TC-002-051,Course X Forum,-,-,-,-,-,Average of ratings,Scale,-,2.5,MAX_AUTO_RATINGS_GRADE_TO_PASS_ERR
+TC-002-052,Course X Forum,-,-,-,-,-,Average of ratings,Scale,-,abc,RATINGs_GRADE_TO_PASS_ERR
+TC-002-053,Course X Forum,-,-,-,-,-,Average of ratings,Point,-10,-10,RATINGS_GRADE_VALUE_ERR
+TC-002-054,Course X Forum,-,-,-,-,-,Average of ratings,Point,200,200,RATINGS_GRADE_VALUE_ERR
+TC-002-055,Course X Forum,-,-,-,-,-,Average of ratings,Point,abc,-,RATINGS_GRADE_VALUE_ERR
+TC-002-056,Course X Forum,-,-,-,-,-,Average of ratings,Point,50,60,MAX_MANUAL_RATINGS_GRADE_TO_PASS_ERR
+TC-002-057,Course X Forum,-,-,-,-,-,Average of ratings,Point,50,a,RATINGS_GRADE_TO_PASS_ERR
+TC-002-058,Course X Forum,-,-,-,-,-,-,-,-,-,SUCCESS
+TC-002-059,-,-,-,-,-,-,-,-,-,-,FORUM_NAME_ERR
+TC-002-060,Course X Forum,ENABLED,2025,-,-,-,-,-,-,-,AVAILABILITY_ERR
+TC-002-061,Course X Forum,-,-,Point,200,-,-,-,-,-,FORUM_GRADE_VALUE_ERR
+TC-002-062,Course X Forum,-,-,-,-,-,Average of ratings,None,-,-,AGG_TYPE_ERR
+TC-002-064,-,-,-,-,-,-,-,-,-,-,FORUM_NAME_ERR
+TC-002-065,Course X Forum,ENABLED,2025,-,-,-,-,-,-,-,AVAILABILITY_ERR
+TC-002-068,Music,-,-,-,-,-,-,-,-,-,SUCCESS
